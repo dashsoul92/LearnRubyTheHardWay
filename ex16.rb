@@ -23,10 +23,19 @@ line3 = $stdin.gets.chomp
 
 puts "I'm going to write these to the file."
 
-target.write(line1)
-target.write("\n")
+target.write(line1 + "\n")
 target.write(line2 + "\n")
 target.write(line3 + "\n")
 
 puts "And finally, we close it."
 target.close
+
+print "Do you want to rename the file(YorN): "
+response = $stdin.gets.chomp
+if response == 'Y'
+  print "What would you like the new name to be: "
+  new_filename = $stdin.gets.chomp
+  File.rename(filename, new_filename)
+else
+  exit
+end
